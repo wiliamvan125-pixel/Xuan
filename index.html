@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05040d">
+  <title>Galaxy Love 2.0</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="starfield" id="starfield" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="logo" href="#" id="homeButton"><span>✦</span> GALAXY LOVE <b>2.0</b></a>
+    <div class="top-actions">
+      <button class="icon-button" id="musicButton" aria-label="Bật nhạc" title="Bật / tắt nhạc">♫</button>
+      <button class="icon-button" id="helpButton" aria-label="Hướng dẫn" title="Hướng dẫn">?</button>
+    </div>
+  </header>
+
+  <!-- Màn hình mở đầu theo mẫu bạn gửi -->
+  <section class="intro-screen" id="introScreen">
+    <div class="intro-copy">
+      <div class="eyebrow">A LITTLE UNIVERSE, JUST FOR US</div>
+      <h1>Our love is written<br><span>in the stars.</span></h1>
+      <p>Có hàng tỷ vì sao ngoài kia, nhưng tinh cầu này<br class="desktop-break"> được tạo nên chỉ để dành cho chúng ta.</p>
+    </div>
+    <button class="enter-hint" id="enterGalaxy">
+      <i></i> CHẠM VÀO TINH CẦU Ở GIỮA ĐỂ MỞ QUÀ BÍ MẬT
+    </button>
+    <div class="footer-note"><span>✧</span> MADE OF STARDUST &amp; LOVE <span>✧</span></div>
+  </section>
+
+  <!-- Thiên hà xuất hiện sau khi chạm -->
+  <main class="galaxy-screen" id="galaxyScreen" aria-hidden="true">
+    <div class="nebula nebula-one"></div>
+    <div class="nebula nebula-two"></div>
+    <div class="galaxy-title">
+      <span>OUR LITTLE UNIVERSE</span>
+      <h2>Every star reminds me of you.</h2>
+    </div>
+
+    <div class="galaxy-stage" id="galaxyStage">
+      <div class="galaxy-world" id="galaxyWorld">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="orbit orbit-c"></div>
+        <div class="orbit orbit-d"></div>
+        <button class="core-button" id="coreButton" aria-label="Mở album kỷ niệm">
+          <span class="core-glow"></span>
+          <span class="core-planet"><i></i></span>
+          <span class="core-ring"></span>
+        </button>
+        <div class="orbiting-photos" id="orbitingPhotos"></div>
+      </div>
+    </div>
+    <button class="back-intro" id="backIntro">← VỀ TRANG ĐẦU</button>
+    <div class="galaxy-caption">VUỐT MỘT NGÓN ĐỂ XOAY KHÔNG GIAN · CHỤM HAI NGÓN ĐỂ PHÓNG TO · CHẠM TINH CẦU ĐỂ MỞ QUÀ</div>
+  </main>
+
+  <div class="heart-reveal" id="heartReveal" aria-hidden="true">
+    <canvas id="heartCanvas"></canvas>
+    <div class="heart-reveal-copy">
+      <span>MADE OF STARDUST &amp; LOVE</span>
+      <strong>YOU ARE MY FAVORITE UNIVERSE</strong>
+    </div>
+  </div>
+
+  <audio id="loveAudio" src="assets/love-song.mp3" preload="none" loop></audio>
+
+  <section class="modal" id="albumModal" aria-hidden="true">
+    <button class="modal-shade" data-close="albumModal" aria-label="Đóng album"></button>
+    <div class="modal-card album-card" role="dialog" aria-modal="true" aria-labelledby="albumTitle">
+      <button class="close-button" data-close="albumModal" aria-label="Đóng">×</button>
+      <div class="modal-eyebrow">A COLLECTION OF OUR MOMENTS</div>
+      <h2 id="albumTitle">Những mảnh ghép của chúng ta 💗</h2>
+      <div class="gift-unlock">
+        <div class="gift-orbit"><span>✦</span><i>♡</i><b>✧</b></div>
+        <div class="gift-copy">
+          <span class="gift-kicker">A LITTLE GIFT FROM THE UNIVERSE</span>
+          <p>Giữa hàng triệu vì sao, có những khoảnh khắc luôn sáng nhất.</p>
+          <small>Chạm vào từng tấm ảnh để ngắm lại kỷ niệm nhé.</small>
+        </div>
+      </div>
+      <p class="modal-desc">Mỗi bức ảnh là một vì sao nhỏ trong vũ trụ này.</p>
+      <div class="photo-grid" id="photoGrid"></div>
+      <button class="soft-button" data-close="albumModal">Trở lại thiên hà ✨</button>
+    </div>
+  </section>
+
+  <section class="photo-viewer" id="photoViewer" aria-hidden="true">
+    <button class="viewer-shade" data-close-viewer aria-label="Đóng ảnh"></button>
+    <div class="viewer-box">
+      <button class="close-button" data-close-viewer aria-label="Đóng">×</button>
+      <img id="viewerImage" src="" alt="Ảnh kỷ niệm">
+      <p id="viewerText">A little memory in our universe ✨</p>
+    </div>
+  </section>
+
+  <section class="modal" id="helpModal" aria-hidden="true">
+    <button class="modal-shade" data-close="helpModal" aria-label="Đóng hướng dẫn"></button>
+    <div class="modal-card help-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <button class="close-button" data-close="helpModal" aria-label="Đóng">×</button>
+      <div class="modal-eyebrow">HOW TO EXPLORE</div>
+      <h2 id="helpTitle">Chào mừng đến vũ trụ nhỏ 💫</h2>
+      <p>Chạm dòng chữ ở trang đầu để bước vào thiên hà. Những bức ảnh sẽ bay quanh tinh cầu như các vì sao.</p>
+      <p>Chạm vào một vì sao để xem ảnh lớn, hoặc chạm tinh cầu ở giữa để mở album kỷ niệm.</p>
+      <p>Nhấn nút ♫ để bật hoặc tắt bài nhạc bạn đã gửi.</p>
+      <button class="soft-button" data-close="helpModal">Đã hiểu 💗</button>
+    </div>
+  </section>
+
+  <script src="photo-assets.js"></script>
+  <script src="script.js"></script>
+  <!-- Three.js classic build: tương thích tốt hơn với các trình chạy HTML online -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="galaxy3d.js"></script>
+</body>
+</html>
